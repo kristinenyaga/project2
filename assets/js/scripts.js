@@ -42,3 +42,25 @@ fetch("https://fakestoreapi.com/products")
     cart.currentWindow = 0;
     cart.classList.add("hide");
   });
+  function getItem() {
+    let cartBtn = document.querySelectorAll("#cart-btn");
+    let wrapper = document.querySelector(".cart-wrapper");
+  
+    for (let button of cartBtn) {
+      button.addEventListener("click", (event) => {
+        let item = event.target.parentElement;
+  
+        let prod = {
+          nameofitem: item.querySelector(".title").textContent,
+          image: item.querySelector(".images").src,
+          cartPrice: item.querySelector(".price").textContent,
+        };
+        console.log(prod);
+  
+        wrapper.append(passProduct(prod));
+  
+        // cartWrapper.innerHTML+=item
+      });
+    }
+  }
+  getItem()
