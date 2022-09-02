@@ -1,3 +1,5 @@
+
+
 fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
   .then((completedData) => {
@@ -36,16 +38,18 @@ fetch("https://fakestoreapi.com/products")
     }, 1000);
   });
   cart.addEventListener("mouseover", () => {
-    Cart.currentWindow = 1;
+    cart.currentWindow = 1;
   });
   cart.addEventListener("mouseleave", () => {
     cart.currentWindow = 0;
     cart.classList.add("hide");
   });
-  function getItem() {
+
+
+
+
+  function getItem (){
     let cartBtn = document.querySelectorAll("#cart-btn");
-    let wrapper = document.querySelector(".cart-wrapper");
-  
     for (let button of cartBtn) {
       button.addEventListener("click", (event) => {
         let item = event.target.parentElement;
@@ -57,13 +61,15 @@ fetch("https://fakestoreapi.com/products")
         };
         console.log(prod);
   
-        wrapper.append(passProduct(prod));
+        passProduct(prod);
   
-        // cartWrapper.innerHTML+=item
+       
       });
     }
   }
   getItem()
+
+
 
 
 
@@ -75,38 +81,203 @@ function passProduct(prod) {
             <img src="${prod.image}">
             <div class="details">
               <h3 class="nameofitem">${prod.nameofitem}e</h3>
-                <input type="number" value="1" class="cart-quantity">
+                <input type="number" id="input${prod.nameofitem}" onchange="updateTotal(this.value , '${prod.nameofitem}' , ${prod.cartPrice})" value="1" class="cart-quantity">
                 <span class="cart-price">${prod.cartPrice}</span>
-                <div class="total-title">Total</div>
-                <div class="total">0.0</div>
+                <div class="total-title >Total</div>
+                <div class="total" id="${prod.nameofitem}">0.0</div>
 
             </div>
-            <div class="cancel">
-              <i class="fas fa-window-close"></i>
-            </div>
+          
+              <i class="fas fa-window-close" onclick="removeCartItem(this)"></i>
+    
           </div>
 
   `
+  if(document.getElementById(prod.nameofitem) === null){
+    
+
   document.querySelector(".cart-wrapper").innerHTML += productItem;
+  }else{
+    let quantity=document.getElementById('input' + prod.nameofitem).value
+    document.getElementById('input' + prod.nameofitem).value=parseInt(quantity)+1
+    updateTotal(parseInt(quantity) +1,prod.nameofitem , prod.cartPrice)
+  }
 }
+// if(document.readyState == "loading")
+// {
+//   document.addEventListener("DOMContentLoaded",ready)
+// }else{
+//   getItem
+// }
 
-
-
-function removeItem() {
+function ready() {
   var removeCartButtons = document.getElementsByClassName("fa-window-close");
-  console.log(removeCartButtons);
+ 
   for (var i = 0; i < removeCartButtons.length; i++) {
     var button = removeCartButtons[i];
     button.addEventListener("click", removeCartItem);
   }
 }
-removeItem();
+ready();
 
 
 // remove items from cart
-function removeCartItem(event) {
-  var buttonClicked = event.target;
+function removeCartItem(button) {
+  
   console.log("buttonClicked")
-  buttonClicked.parentElement.parentElement.remove();
-  updateTotal();
+  button.parentElement.remove();
 }
+
+
+
+// update Total
+function updateTotal(value,name,price) {
+  
+  var total = 0;
+  console.log("name"+name)
+    var quantity = value;
+    total = total + (price * quantity);
+    document.getElementById(name).innerText = "$" + total;
+  
+}
+
+function mensWare() {
+  let menWare = document.querySelector("#men").addEventListener("click", () => {
+    fetch("https://fakestoreapi.com/products/category/men's clothing")
+      .then((res) => res.json())
+      .then((completedData) => {
+        let data1 = "";
+        completedData.map((values) => {
+          data1 += `
+        <div class="card">
+          <h1 class="title">${values.title}</h1>
+          <img src="${values.image}" alt="" class="images">
+          <p>${values.description}</p>
+          <p class="category">${values.category}</p>
+          <p class="price">${values.price}</p>
+          <button id="cart-btn">Add to cart</button>
+          </div>
+      </div>
+        `;
+        });
+        document.getElementById("cards").innerHTML = data1;
+      });
+  });
+}
+mensWare();
+
+function womensWare() {
+  let womenWare = document
+    .querySelector("#ladies")
+    .addEventListener("click", () => {
+      fetch("https://fakestoreapi.com/products/category/women's clothing")
+        .then((res) => res.json())
+        .then((completedData) => {
+          let data1 = "";
+          completedData.map((values) => {
+            data1 += `
+        <div class="card">
+          <h1 class="title">${values.title}</h1>
+          <img src="${values.image}" alt="" class="images">
+          <p>${values.description}</p>
+          <p class="category">${values.category}</p>
+          <p class="price">${values.price}</p>
+          <button id="cart-btn">Add to cart</button>
+          </div>
+      </div>
+        `;
+          });
+          document.getElementById("cards").innerHTML = data1;
+        });
+    });
+}
+womensWare();
+
+function jewelery() {
+  let womenWare = document
+    .querySelector("#jewelery")
+    .addEventListener("click", () => {
+      fetch("https://fakestoreapi.com/products//category/jewelery")
+        .then((res) => res.json())
+        .then((completedData) => {
+          let data1 = "";
+          completedData.map((values) => {
+            data1 += `
+        <div class="card">
+          <h1 class="title">${values.title}</h1>
+          <img src="${values.image}" alt="" class="images">
+          <p>${values.description}</p>
+          <p class="category">${values.category}</p>
+          <p class="price">${values.price}</p>
+          <button id="cart-btn">Add to cart</button>
+          </div>
+      </div>
+        `;
+          });
+          document.getElementById("cards").innerHTML = data1;
+        });
+    });
+}
+jewelery();
+
+function electronics() {
+  let electronics = document
+    .querySelector("#electronics")
+    .addEventListener("click", () => {
+      fetch("https://fakestoreapi.com/products/category/electronics")
+        .then((res) => res.json())
+        .then((completedData) => {
+          let data1 = "";
+          completedData.map((values) => {
+            data1 += `
+        <div class="card">
+          <h1 class="title">${values.title}</h1>
+          <img src="${values.image}" alt="" class="images">
+          <p>${values.description}</p>
+          <p class="category">${values.category}</p>
+          <p class="price">${values.price}</p>
+          <button id="cart-btn">Add to cart</button>
+          </div>
+      </div>
+        `;
+          });
+          document.getElementById("cards").innerHTML = data1;
+        });
+    });
+}
+electronics();
+
+function all() {
+  let all = document
+    .querySelector("#all")
+    .addEventListener("click", () => {
+      fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((completedData) => {
+          let data1 = "";
+          completedData.map((values) => {
+            data1 += `
+        <div class="card">
+          <h1 class="title">${values.title}</h1>
+          <img src="${values.image}" alt="" class="images">
+          <p>${values.description}</p>
+          <p class="category">${values.category}</p>
+          <p class="price">${values.price}</p>
+          <button id="cart-btn">Add to cart</button>
+          </div>
+      </div>
+        `;
+          });
+          document.getElementById("cards").innerHTML = data1;
+        });
+    });
+    
+}
+all();
+
+
+
+
+
+
+
