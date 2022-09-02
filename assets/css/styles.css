@@ -231,4 +231,70 @@ h2{
 }
 /* styling of card section ends */
 
+/* styling of the cards */
+#cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  align-items: center;
+  min-width: 550px;
+  /* background-image: url("/assets/my_images/pawel-czerwinski-d5TBzrddHMk-unsplash.jpg"); */
+  background-color: #111;
+  color: #fff;
+  width: 100%;
+  margin-top: 280px;
+  padding: 100px;
+  
+}
+.card {
+  width: 23%;
+  box-shadow: 0 0 4px rgb(245, 7, 47);
+  text-align: center;
+  padding: 1.5rem;
+  padding: 20px;
+ max-height: 600px;
+  /* margin-top: 2em; */
+}
+.title {
+  font-size: 1.3rem;
+}
+.category,
+.price {
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 1em;
+  font-size: 1.2rem;
+}
+.images {
+ 
+  width: 100px;
+}
+.cart{
+  position: absolute;
+  right: 0;
+}
+
+#cart-btn{
+  width: fit-content;
+  margin: auto;
+  /* margin-top: 10px; */
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: rgb(177, 74, 58);
+  border-radius: 30px;
+  outline: none;
+  border-color: rgb(177, 74, 58);
+}
+
+.description{
+  font-size: 12px;
+}
+
+/* end of cards styling */
+
+
+
+
+
 
