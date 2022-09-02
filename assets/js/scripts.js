@@ -26,11 +26,11 @@ fetch("https://fakestoreapi.com/products")
   const cart= document.querySelector(".whole-cart-window");
   cart.currentWindow = 0;
   cartIcon.addEventListener("mouseover", () => {
-    if (cart.classList.contains("hide"))
+    if (cart.classList.contains("hide")){ 
       cart.classList.remove("hide");
-  });
+  }});
   cartIcon.addEventListener("mouseout", () => {
-    // if(cart.classList.contains("hide"))
+   
     setTimeout(() => {
       if (cart.currentWindow === 0) {
         cart.classList.add("hide");
@@ -60,8 +60,39 @@ fetch("https://fakestoreapi.com/products")
           cartPrice: item.querySelector(".price").textContent,
         };
         console.log(prod);
+        function passProduct(prod) {
+          let productItem = "";
+          productItem = `
+          
+                  <div class="cart-item">
+                    <img src="${prod.image}">
+                    <div class="details">
+                      <h3 class="nameofitem">${prod.nameofitem}e</h3>
+                        <input type="number" id="input${prod.nameofitem}" onchange="updateTotal(this.value , '${prod.nameofitem}' , ${prod.cartPrice})" value="1" class="cart-quantity">
+                        <span class="cart-price">${prod.cartPrice}</span>
+                        <div class="total-title >Total</div>
+                        <div class="total" id="${prod.nameofitem}">0.0</div>
+        
+                    </div>
+                  
+                      <i class="fas fa-window-close" onclick="removeCartItem(this)"></i>
+            
+                  </div>
+        
+          `
+          if(document.getElementById(prod.nameofitem) === null)
+          {
+          document.querySelector(".cart-wrapper").innerHTML += productItem;
+          }
+          else
+          {
+            let quantity=document.getElementById('input' + prod.nameofitem).value
+            document.getElementById('input' + prod.nameofitem).value=parseInt(quantity)+1
+            updateTotal(parseInt(quantity) +1,prod.nameofitem , prod.cartPrice)
+          }
+        }
   
-        passProduct(prod);
+        // passProduct(prod);
   
        
       });
@@ -93,11 +124,12 @@ function passProduct(prod) {
           </div>
 
   `
-  if(document.getElementById(prod.nameofitem) === null){
-    
-
+  if(document.getElementById(prod.nameofitem) === null)
+  {
   document.querySelector(".cart-wrapper").innerHTML += productItem;
-  }else{
+  }
+  else
+  {
     let quantity=document.getElementById('input' + prod.nameofitem).value
     document.getElementById('input' + prod.nameofitem).value=parseInt(quantity)+1
     updateTotal(parseInt(quantity) +1,prod.nameofitem , prod.cartPrice)
@@ -110,7 +142,7 @@ function passProduct(prod) {
 //   getItem
 // }
 
-function ready() {
+function removeItem() {
   var removeCartButtons = document.getElementsByClassName("fa-window-close");
  
   for (var i = 0; i < removeCartButtons.length; i++) {
@@ -118,7 +150,7 @@ function ready() {
     button.addEventListener("click", removeCartItem);
   }
 }
-ready();
+removeItem();
 
 
 // remove items from cart
