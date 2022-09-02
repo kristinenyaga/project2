@@ -23,4 +23,23 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+/* styling of head section starts */
+header{
+  position: fixed;
+  left: 0;
+  right: 3em;
+  top: 0;
+  height: 40vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-image: url('/assets/my_images/henrik-donnestad-4UwRjnnWt90-unsplash.jpg'); */
+  background-repeat: repeat;
+  background-size: contain;
+  background-color: rgb(9, 7, 7);
+  color: rgb(154, 97, 23);
+  width: 100%;
+  
+}
+/*  styling of head section ends  */
 
