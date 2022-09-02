@@ -91,3 +91,22 @@ function passProduct(prod) {
 }
 
 
+
+function removeItem() {
+  var removeCartButtons = document.getElementsByClassName("fa-window-close");
+  console.log(removeCartButtons);
+  for (var i = 0; i < removeCartButtons.length; i++) {
+    var button = removeCartButtons[i];
+    button.addEventListener("click", removeCartItem);
+  }
+}
+removeItem();
+
+
+// remove items from cart
+function removeCartItem(event) {
+  var buttonClicked = event.target;
+  console.log("buttonClicked")
+  buttonClicked.parentElement.parentElement.remove();
+  updateTotal();
+}
