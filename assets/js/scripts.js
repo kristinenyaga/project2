@@ -20,3 +20,25 @@ fetch("https://fakestoreapi.com/products")
   })
   .catch((err) => console.log(err));
 
+  const cartIcon = document.querySelector(".fa-cart-arrow-down");
+  const cart= document.querySelector(".whole-cart-window");
+  cart.currentWindow = 0;
+  cartIcon.addEventListener("mouseover", () => {
+    if (cart.classList.contains("hide"))
+      cart.classList.remove("hide");
+  });
+  cartIcon.addEventListener("mouseout", () => {
+    // if(cart.classList.contains("hide"))
+    setTimeout(() => {
+      if (cart.currentWindow === 0) {
+        cart.classList.add("hide");
+      }
+    }, 1000);
+  });
+  cart.addEventListener("mouseover", () => {
+    Cart.currentWindow = 1;
+  });
+  cart.addEventListener("mouseleave", () => {
+    cart.currentWindow = 0;
+    cart.classList.add("hide");
+  });
