@@ -108,6 +108,127 @@ header{
 
 /* styling of categories section ends */
 
+/* styling of cart section starts */
 
+
+
+.cart-box{
+  width: 26% !important;
+  position: absolute;
+  left: 72%;
+  top: 25%;
+  border: solid 1px rgb(22, 22, 34);
+  padding: 10px 20px;
+  border: none;
+
+}
+h2{
+  font-size: x-large;
+  padding: 15px 10px;
+}
+.cart-wrapper{
+  overflow-y: auto;
+  max-height: 350px;
+  width: 24vw;
+}
+.subtotal{
+  text-align: right;
+  padding:5%;
+}
+/*  */
+
+.checkout,
+.view-cart{
+  width: 95%;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(154, 97, 23);
+  font-size: large;
+  color: black;
+  margin: 10px auto;
+  padding: 10px 15px;
+
+}
+
+.view-cart{
+  background-color: rgb(246, 244, 242);
+  border-radius: 2px rgb(154, 97, 23);
+  color: rgb(154, 97, 23);
+
+}
+.cart-icon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  cursor: pointer;
+}
+.cart-item{
+  display: grid;
+  grid-template-columns: 3fr 6fr 1fr;
+  padding: 5% 2%;
+  border-bottom:solid 1px rgb(28, 42, 42) ;
+}
+.cart-item img{
+  width: 100%;
+}
+.cart-item .details{
+  padding-left: 10%;
+}
+.cart-item h3{
+  text-align: left ;
+  margin-bottom: 5%;
+
+}
+.cart-item .price{
+  display: block;
+  text-align: right;
+  margin-top: 35%;
+}
+.quantity{
+  display: block;
+  margin-top: 5%;
+}
+.fa-window-close{
+  background-color: rgb(154, 97, 23);
+  color: white;
+  cursor: pointer;
+}
+.cancel{
+  text-align: right;
+}
+.whole-cart-window{
+  border: solid 1px lightgrey;
+  position: fixed;
+  top: 12vh;
+  background-color: white;
+  margin-right: 2%;
+  border-top: none;
+}
+.hide{
+  display: none;
+}
+.non-empty::after{
+  content: var(--after-content);
+  font-size: 12px;
+  width: 12px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: -26px;
+  right: 10px;
+  background-color: red;
+  border-radius:50% ;
+  color:white;
+}
+.cart-quantity{
+  border: 1px solid brown;
+  outline-color: black;
+  width: 2.7rem;
+  text-align: center;
+  font-size: 1rem;
+
+}
+/* styling of card section ends */
 
 
