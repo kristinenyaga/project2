@@ -64,3 +64,30 @@ fetch("https://fakestoreapi.com/products")
     }
   }
   getItem()
+
+
+
+function passProduct(prod) {
+  let productItem = "";
+  productItem = `
+  
+          <div class="cart-item">
+            <img src="${prod.image}">
+            <div class="details">
+              <h3 class="nameofitem">${prod.nameofitem}e</h3>
+                <input type="number" value="1" class="cart-quantity">
+                <span class="cart-price">${prod.cartPrice}</span>
+                <div class="total-title">Total</div>
+                <div class="total">0.0</div>
+
+            </div>
+            <div class="cancel">
+              <i class="fas fa-window-close"></i>
+            </div>
+          </div>
+
+  `
+  document.querySelector(".cart-wrapper").innerHTML += productItem;
+}
+
+
