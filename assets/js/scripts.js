@@ -13,7 +13,7 @@ fetch("https://fakestoreapi.com/products")
       <p class="description">${values.description}</p>
       <h3>Category:</h3><p class="category">${values.category}</p>
       <p class="price">${values.price}</p>
-      <button id="cart-btn">Add to cart</button>
+      <button id="cart-btn" onclick="getItem()">Add to cart</button>
       </div>
   </div>
     `;
@@ -49,6 +49,7 @@ fetch("https://fakestoreapi.com/products")
 
 
   function getItem (){
+    console.log("kris")
     let cartBtn = document.querySelectorAll("#cart-btn");
     for (let button of cartBtn) {
       button.addEventListener("click", (event) => {
@@ -59,46 +60,13 @@ fetch("https://fakestoreapi.com/products")
           image: item.querySelector(".images").src,
           cartPrice: item.querySelector(".price").textContent,
         };
-        console.log(prod);
-        function passProduct(prod) {
-          let productItem = "";
-          productItem = `
-          
-                  <div class="cart-item">
-                    <img src="${prod.image}">
-                    <div class="details">
-                      <h3 class="nameofitem">${prod.nameofitem}e</h3>
-                        <input type="number" id="input${prod.nameofitem}" onchange="updateTotal(this.value , '${prod.nameofitem}' , ${prod.cartPrice})" value="1" class="cart-quantity">
-                        <span class="cart-price">${prod.cartPrice}</span>
-                        <div class="total-title >Total</div>
-                        <div class="total" id="${prod.nameofitem}">0.0</div>
-        
-                    </div>
-                  
-                      <i class="fas fa-window-close" onclick="removeCartItem(this)"></i>
-            
-                  </div>
-        
-          `
-          if(document.getElementById(prod.nameofitem) === null)
-          {
-          document.querySelector(".cart-wrapper").innerHTML += productItem;
-          }
-          else
-          {
-            let quantity=document.getElementById('input' + prod.nameofitem).value
-            document.getElementById('input' + prod.nameofitem).value=parseInt(quantity)+1
-            updateTotal(parseInt(quantity) +1,prod.nameofitem , prod.cartPrice)
-          }
-        }
-  
-        // passProduct(prod);
+        passProduct(prod);
   
        
       });
     }
   }
-  getItem()
+  // getItem()
 
 
 
