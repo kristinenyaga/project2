@@ -1,4 +1,4 @@
-## **Shop Sasa**
+## **Shop Fast**
 __designed by__
 
 **Christine Nyaga**
